@@ -27,8 +27,10 @@ function runEmpTracker() {
                 'Add A Department', 
                 'Add A Role', 
                 'Add An Employee', 
-                'Update An Employee Role', 
+                'Update An Employee Role',
+                'Update Employee Manager',
                 'Exit Employee Tracker'
+                
             ]
     })
     .then (function(selection) {
@@ -60,6 +62,10 @@ function runEmpTracker() {
 
             case 'Update An Employee Role':
                 updateAnEmployeeRole();
+                break;
+
+            case 'Update Employee Manager':
+                updateAnEmployeeManager();
                 break;
 
             case 'Exit Employee Tracker':
@@ -426,6 +432,72 @@ function updateAnEmployeeRole() {
         =========================================
             Successfully updated new role ID ${newRoleId} 
             for Employee ${empId} to the database!
+        =========================================
+            `);
+
+            // call role function to display the new and current database of Roles Table
+            viewAllEmployees();
+            });
+        })
+    })
+};
+
+// To update an employee manager
+function updateAnEmployeeManager() {
+    // to display the current employees table so user can refer to the current employees IDs
+    sqlCurrentEmp = `SELECT employees.*, roles.title AS role_title, 
+    roles.salary, department_id, departments.name AS department_name
+    FROM employees
+    LEFT JOIN roles ON employees.role_id = roles.id
+    LEFT JOIN departments ON roles.department_id = departments.id;`;
+    db.query(sqlCurrentEmp, (err, rows) => {
+        if(err) throw err;
+        console.table('List of current Employees Table:', rows);
+
+        // to prompt user to input new role info
+        inquirer
+        .prompt ([
+            {
+                type: "input",
+                name: "empId",
+                message: "Which employee needs to be updated?",
+                validate: nameInput => {
+                    if (nameInput) {
+                        return true;
+                    } else {
+                        console.log ('Please enter the Employee ID!');
+                        return false;
+                    }
+                }
+            },
+            {
+                type: "input",
+                name: "newManagerId",
+                message: "What is the employee's New Manager ID?",
+                validate: nameInput => {
+                    if (nameInput) {
+                        return true;
+                    } else {
+                        console.log ('Please enter the employee\'s New Manager ID!');
+                        return false;
+                    }
+                }
+            },
+        ])
+        .then (function(data) {
+            const empId = data.empId;
+            const newManagerId = data.newManagerId;
+
+            const sql = `UPDATE employees SET manager_id = ? WHERE id = ?`;
+            const params = [newManagerId, empId];
+            
+            // to add new manager info to db
+            db.query(sql, params, (err, rows) => {
+                if (err) throw err;
+                console.log(`
+        =========================================
+          Successfully updated new Manager ID ${newManagerId} 
+           for Employee ${empId} to the database!
         =========================================
             `);
 

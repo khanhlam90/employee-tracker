@@ -71,10 +71,10 @@ function runEmpTracker() {
 
 // To view Departments Table
 function viewAllDeparments() {
-    const departmentsTableQuery = `
+    const sql = `
     SELECT * FROM departments;
     `;
-    db.query(departmentsTableQuery, (err, rows) => {
+    db.query(sql, (err, rows) => {
         if (err) throw err;
         console.log(`
     =========================================
@@ -88,12 +88,12 @@ function viewAllDeparments() {
 
 // To view Roles Table
 function viewAllRoles() {
-    const rolesTableQuery = `
+    const sql = `
     SELECT roles.*, departments.name AS department_name
     FROM roles
     LEFT JOIN departments ON roles.department_id = departments.id;
     `;
-    db.query(rolesTableQuery, (err, rows) => {
+    db.query(sql, (err, rows) => {
         if (err) throw err;
         console.log(`
     =========================================
@@ -107,14 +107,14 @@ function viewAllRoles() {
 
 // To view Employees Table
 function viewAllEmployees() {
-    const employeesTableQuery = `
+    const sql = `
     SELECT employees.*, roles.title AS role_title, 
     roles.salary, department_id, departments.name AS department_name
     FROM employees
     LEFT JOIN roles ON employees.role_id = roles.id
     LEFT JOIN departments ON roles.department_id = departments.id;
     `;
-    db.query(employeesTableQuery, (err, rows) => {
+    db.query(sql, (err, rows) => {
         if (err) throw err;
         console.log(`
     =========================================
@@ -128,7 +128,40 @@ function viewAllEmployees() {
 
 // To add a department
 function addADepartment() {
+    inquirer
+    .prompt (
+        {
+        type: "input",
+        name: "newDept",
+        message: "What is the name of NEW DEPARTMENT?",
+        validate: nameInput => {
+            if (nameInput) {
+                return true;
+            } else {
+                console.log ('Please enter the NEW DEPARTMENT name!');
+                return false;
+            }
+        }
+    })
+    .then (function(data) {
+        const newDepartment = data.newDept;
+        const sql = `INSERT INTO departments (name) VALUES (?)`;
+        const params = [newDepartment];
+        
+        // to add new department name to db
+        db.query(sql, params, (err, rows) => {
+            if (err) throw err;
+            console.log(`
+    =========================================
+        Successfully added new department
+     named ${newDepartment} to the database!
+    =========================================
+        `);
 
+        // call department function to display the new database of Departments Table
+        viewAllDeparments();
+        });
+    })
 };
 
 // To add a role
@@ -142,9 +175,26 @@ function addAnEmployee() {
 };
 
 // to update an employee role
-function updateAnEmployeeRole() {
-
-};
+// function updateAnEmployeeRole() {
+//     const sql = `UPDATE voters SET email = ? WHERE id = ?`;
+//     const params = [req.body.email, req.params.id];
+  
+//     db.query(sql, params, (err, result) => {
+//       if (err) {
+//         res.status(400).json({ error: err.message });
+//       } else if (!result.affectedRows) {
+//         res.json({
+//           message: 'Voter not found'
+//         });
+//       } else {
+//         res.json({
+//           message: 'success',
+//           data: req.body,
+//           changes: result.affectedRows
+//         });
+//       }
+//     });
+//};
 
 
 // Exit tracker and end connection
@@ -152,8 +202,8 @@ function exitEmployeeTracker() {
     console.log (
     `
     =========================================
-        Successfully Exit Employee Tracker!
-        RUN 'node index.js' to start again!
+       Successfully Exit Employee Tracker!
+       RUN 'node index.js' to start again!
     =========================================
     `
     )
@@ -161,6 +211,7 @@ function exitEmployeeTracker() {
     return;
 };
 
+// To continue or exit the Employee Tracker app
 function continueOrExit() {
     inquirer
     .prompt ({

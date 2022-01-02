@@ -53,7 +53,6 @@ INSERT INTO employees (first_name, last_name, role_id, manager_id)
     ('Klima', 'Lobi', 31, 3),
     ('Paxg', 'Time', 30, 3),
     ('Xpunk', 'Mkr', 29, 3),
-
     ('Rook', 'Sfi', 28, 8),
     ('Ohm', 'Ksm', 27, 8),
     ('Strong', 'Bch', 26, 9),
@@ -61,7 +60,6 @@ INSERT INTO employees (first_name, last_name, role_id, manager_id)
     ('Klima', 'Lobi', 24, 10),
     ('Paxg', 'Time', 23, 10),
     ('Xpunk', 'Mkr', 22, 10),
-
     ('Aave', 'Ach', 21, 15),
     ('Ltc', '1inch', 20, 15),
     ('Btc', 'Xrp', 19, 16),
@@ -69,7 +67,6 @@ INSERT INTO employees (first_name, last_name, role_id, manager_id)
     ('Kind', 'Son', 17, 17),
     ('Realm', 'Kine', 16, 17),
     ('Shiba', 'Yfi', 15, 17),
-
     ('Solo', 'Dead', 14, 22),
     ('Bitcoin', 'Usa', 13, 22),
     ('Bnb', 'Chia', 12, 23),
@@ -77,7 +74,6 @@ INSERT INTO employees (first_name, last_name, role_id, manager_id)
     ('Que', 'Sghfd', 10, 24),
     ('Xela', 'Ngu', 9, 24),
     ('Asg', 'Rsfd', 8, 24),
-
     ('Rachel', 'Stup', 7, 29),
     ('Mia', 'Rud', 6, 29),
     ('Bianca', 'Ma', 5, 30),

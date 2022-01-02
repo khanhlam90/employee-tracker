@@ -67,16 +67,22 @@ After the installation, please follow:
 
 - Screenshot of Files Structure Demonstration:
 ![Screenshot of Command Line Demonstration](./assets/images/demonstration-0.png)
+
 - Screenshot of Command Line MySQL databases:
 ![Screenshot of Command Line MySQL databases](./assets/images/demonstration-1.png)
+
 - Screenshot of running the application in Terminal:
 ![Screenshot of running the application in Terminal](./assets/images/demonstration-2.png)
+
 - Screenshot of Viewing All Departments:
 ![Screenshot of Viewing all Departments](./assets/images/demonstration-3.png)
+
 - Screenshot of Adding A Department:
 ![Screenshot of Adding A Department](./assets/images/demonstration-4.png)
+
 - Screenshot of Adding An Employee:
 ![Screenshot of Adding An Employee](./assets/images/demonstration-5.png)
+
 - Screenshot of Existing The Application:
 ![Screenshot of Existing The Application](./assets/images/demonstration-6.png)
 

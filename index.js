@@ -24,7 +24,8 @@ function runEmpTracker() {
                 'View All Deparments', 
                 'View All Roles', 
                 'View All Employees', 
-                'Add A Department', 
+                'View Employees by Manager',
+                'Add A Department',
                 'Add A Role', 
                 'Add An Employee', 
                 'Update An Employee Role',
@@ -46,6 +47,10 @@ function runEmpTracker() {
 
             case 'View All Employees':
                 viewAllEmployees();
+                break;
+            
+            case 'View Employees by Manager':
+                viewEmployeesByManager();
                 break;
 
             case 'Add A Department':
@@ -508,6 +513,55 @@ function updateAnEmployeeManager() {
     })
 };
 
+// To view Employees by Manager
+function viewEmployeesByManager() {
+    // to display the current employees table so user can refer to the current employees IDs
+    sqlCurrentEmp = `SELECT employees.*, roles.title AS role_title, 
+    roles.salary, department_id, departments.name AS department_name
+    FROM employees
+    LEFT JOIN roles ON employees.role_id = roles.id
+    LEFT JOIN departments ON roles.department_id = departments.id;`;
+    db.query(sqlCurrentEmp, (err, rows) => {
+        if(err) throw err;
+        console.table('List of current Employees Table:', rows);
+
+        // to prompt user to input new info
+        inquirer
+            .prompt (
+                {
+                    type: "input",
+                    name: "managerId",
+                    message: "For which Manager ID do you want to view his managing employees?",
+                    validate: nameInput => {
+                        if (nameInput) {
+                            return true;
+                        } else {
+                            console.log ('Please enter the Manager ID!');
+                            return false;
+                        }
+                    }
+                }
+            )
+            .then (function(data) {
+                const managerId = data.managerId;
+
+                const sql = `SELECT * FROM employees WHERE manager_id = ?`;
+                const params = [managerId];
+                
+                // to add new manager info to db
+                db.query(sql, params, (err, rows) => {
+                    if (err) throw err;
+                    console.log(`
+            =========================================
+                Viewing Employees Table Managed
+                    by Manager ID ${managerId} 
+            =========================================
+                `);
+                console.table(rows);
+                });
+            })
+    });
+};
 
 // Exit tracker and end connection
 function exitEmployeeTracker() {

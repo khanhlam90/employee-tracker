@@ -3,9 +3,35 @@
 ![Github License](https://img.shields.io/static/v1?label=License&message=MIT&color=blue&style=for-the-badge)
 
 ## Description
-XZY details
+Developers frequently have to create interfaces that allow non-developers to easily view and interact with information stored in databases. These interfaces are called content management systems (CMS).
 
-This project xyz using the [Inquirer package](https://www.npmjs.com/package/inquirer).
+This application is to manage a company's employee database, using Node.js, Inquirer, and MySQL.
+
+This project uses the [Inquirer package](https://www.npmjs.com/package/inquirer), [MySQL2 package](https://www.npmjs.com/package/mysql2), and [console.table package](https://www.npmjs.com/package/console.table).
+
+User Story
+- AS A business owner
+- I WANT to be able to view and manage the departments, roles, and employees in my company
+- SO THAT I can organize and plan my business
+
+Acceptance Criteria
+- GIVEN a command-line application that accepts user input
+- WHEN I start the application
+- THEN I am presented with the following options: view all departments, view all roles, view all employees, add a department, add a role, add an employee, and update an employee role
+- WHEN I choose to view all departments
+- THEN I am presented with a formatted table showing department names and department ids
+- WHEN I choose to view all roles
+- THEN I am presented with the job title, role id, the department that role belongs to, and the salary for that role
+- WHEN I choose to view all employees
+- THEN I am presented with a formatted table showing employee data, including employee ids, first names, last names, job titles, departments, salaries, and managers that the employees report to
+- WHEN I choose to add a department
+- THEN I am prompted to enter the name of the department and that department is added to the database
+- WHEN I choose to add a role
+- THEN I am prompted to enter the name, salary, and department for the role and that role is added to the database
+- WHEN I choose to add an employee
+- THEN I am prompted to enter the employee’s first name, last name, role, and manager, and that employee is added to the database
+- WHEN I choose to update an employee role
+- THEN I am prompted to select an employee to update and their new role and this information is updated in the database
 
 ## Table of Contents
 
@@ -20,24 +46,41 @@ This project xyz using the [Inquirer package](https://www.npmjs.com/package/inqu
 ## Installation
 
 To use this application, please follow the following steps:
-- Clone the repository using SSH - 'git clone git@github.com:khanhlam90/professional-readme-generator.git'
+- Clone the repository using SSH - 'git clone git@github.com:khanhlam90/employee-tracker.git'
 - Run npm to install the inquirer dependencies - 'npm install inquirer'
+- Run npm to install the MySQL2 dependencies - 'npm install mysql2'
+- Run npm to install the console.table dependencies - 'npm install console.table --save'
+- The dabase "employee_tracker" have been created and stored in ./db/db.sql
+- Tables and data have been created created and stored in ./db/schema.sql and seeds.sql
+- Run mysql -u root -p and enter your password
+- Use the database by enter the following in the command line - 'source db/db.sql'
+- Create the tables by enter the following in the command line - 'source db/schema.sql'
+- Check if the tables have been created successfully by entering the following in the command line - 'SHOW TABLES;'
+- Seed the tables data - 'source db/seeds.sql' - Note that users could manually alter the data of the tables in VS code.
+- Test the data by trying the following - 'SELECT * FROM employees or roles or departments'
+- Exit mysql - quit;
 
 ## Usage 
 After the installation, please follow:
 - Run 'node index.js' or simply 'node index'
-- Answer prompts qyestion as detailed as possible to generate a concise and profssional README.md
-- At the end of the prompts, a successful message will appear
-- Navigate to root directory and access into sub-directory named 'dist' - your README.md file is placed in there.
-- Keep in mind that users always have to preview the just-created version of the file for correction, such as spellings, grammars, details, etc.
-- Screenshot of Command Line Demonstration:
-![Screenshot of Command Line Demonstration](./assets/images/readme-demonstration-0.png)
-- Screenshot of README.md output - viewed in VS Code:
-![Screenshot of README.md output](./assets/images/readme-demonstration-1.png)
-- Screenshot of README.md output - viewed in Github :
-![Screenshot of Command Line Demonstration](./assets/images/readme-demonstration-2.png)
+- Select options by prompts
 
-- [Link to the video demonstration of how to run the application](https://drive.google.com/file/d/1jTTzYo8H0t_drwk09x05Fwwr0gnyKCCr/view?usp=sharing)
+- Screenshot of Files Structure Demonstration:
+![Screenshot of Command Line Demonstration](./assets/images/demonstration-0.png)
+- Screenshot of Command Line MySQL databases:
+![Screenshot of Command Line MySQL databases](./assets/images/demonstration-1.png)
+- Screenshot of running the application in Terminal:
+![Screenshot of running the application in Terminal](./assets/images/demonstration-2.png)
+- Screenshot of Viewing All Departments:
+![Screenshot of Viewing all Departments](./assets/images/demonstration-3.png)
+- Screenshot of Adding A Department:
+![Screenshot of Adding A Department](./assets/images/demonstration-4.png)
+- Screenshot of Adding An Employee:
+![Screenshot of Adding An Employee](./assets/images/demonstration-5.png)
+- Screenshot of Existing The Application:
+![Screenshot of Existing The Application](./assets/images/demonstration-6.png)
+
+- [Link to the video demonstration of how to run the application](https://drive.google.com/drive/folders/1Oc2k2ySreNb_kmoDX0RURd2IhfojAJ33?usp=sharing)
 
 ## License
 
@@ -60,7 +103,6 @@ Please reach me using:
 [My Github Account](https://github.com/khanhlam90)
 
 ## Project Links:
-* [Demostration Video](https://drive.google.com/file/d/1jTTzYo8H0t_drwk09x05Fwwr0gnyKCCr/view?usp=sharing)
-* [Sample README.md](./dist/README.md)
-* [Github Repository](https://github.com/khanhlam90/professional-readme-generator.git)
+* [Demostration Video](https://drive.google.com/drive/folders/1Oc2k2ySreNb_kmoDX0RURd2IhfojAJ33?usp=sharing)
+* [Github Repository](https://github.com/khanhlam90/employee-tracker.git)
 

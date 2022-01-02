@@ -558,6 +558,8 @@ function viewEmployeesByManager() {
             =========================================
                 `);
                 console.table(rows);
+                // ask user to continue or exit
+                continueOrExit();
                 });
             })
     });

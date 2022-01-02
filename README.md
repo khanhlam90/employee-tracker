@@ -86,7 +86,7 @@ After the installation, please follow:
 - Screenshot of Existing The Application:
 ![Screenshot of Existing The Application](./assets/images/demonstration-6.png)
 
-- [Link to the video demonstration of how to run the application](https://drive.google.com/drive/folders/1Oc2k2ySreNb_kmoDX0RURd2IhfojAJ33?usp=sharing)
+- [Link to the video demonstration of how to run the application](https://drive.google.com/file/d/1t49E1y3YPgMigv31jAWGCpUuyuYTnjvg/view?usp=sharing)
 
 ## License
 
@@ -109,6 +109,6 @@ Please reach me using:
 [My Github Account](https://github.com/khanhlam90)
 
 ## Project Links:
-* [Demostration Video](https://drive.google.com/drive/folders/1Oc2k2ySreNb_kmoDX0RURd2IhfojAJ33?usp=sharing)
+* [Demostration Video](https://drive.google.com/file/d/1t49E1y3YPgMigv31jAWGCpUuyuYTnjvg/view?usp=sharing)
 * [Github Repository](https://github.com/khanhlam90/employee-tracker.git)
 
